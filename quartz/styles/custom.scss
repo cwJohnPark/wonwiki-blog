@@ -1,3 +1,13 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// Pretendard font loaded via Head.tsx
+
+// 폴더 페이지 태그 글자 크기 축소
+.section > .tags {
+  font-size: 0.75rem;
+}
+
+.section > .tags > li {
+  display: inline-block;
+  margin-right: 0.3em;
+}
