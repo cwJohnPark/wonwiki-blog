@@ -21,8 +21,8 @@ const config: QuartzConfig = {
       fontOrigin: "local",
       cdnCaching: true,
       typography: {
-        header: "Pretendard",
-        body: "Pretendard",
+        header: "Pretendard Variable",
+        body: "Pretendard Variable",
         code: "IBM Plex Mono",
       },
       colors: {
