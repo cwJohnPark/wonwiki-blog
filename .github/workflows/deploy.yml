@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:
+    types: [vault-updated]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,10 +21,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Quartz
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          submodules: true
+      - name: Checkout vault content
+        uses: actions/checkout@v4
+        with:
+          repository: cwJohnPark/wonwiki-obsidian
+          token: ${{ secrets.VAULT_PAT }}
+          path: vault
+          fetch-depth: 0
+      - name: Copy content
+        run: |
+          rm -rf content
+          cp -r vault/technology content
       - uses: actions/setup-node@v4
         with:
           node-version: 22
