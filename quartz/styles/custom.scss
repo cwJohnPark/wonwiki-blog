@@ -1,6 +1,6 @@
 @use "./base.scss";
 
-// Local fonts
+// ─── Local Fonts ───────────────────────────────────────
 @font-face {
   font-family: "Pretendard Variable";
   font-weight: 45 920;
@@ -25,28 +25,119 @@
   src: url("/static/fonts/IBMPlexMono-Bold.woff2") format("woff2");
 }
 
-// 폴더 페이지 날짜 글자 크기 축소 + 줄바꿈 방지
+// ─── Global ────────────────────────────────────────────
+body {
+  letter-spacing: -0.01em;
+  line-height: 1.75;
+}
+
+// ─── Typography ────────────────────────────────────────
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.1rem; }
+
+// ─── Links ─────────────────────────────────────────────
+a {
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--tertiary);
+  }
+}
+
+article a {
+  text-decoration: underline;
+  text-decoration-color: var(--lightgray);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+
+  &:hover {
+    text-decoration-color: var(--tertiary);
+  }
+}
+
+// ─── Page Title ────────────────────────────────────────
+.page-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.03em;
+}
+
+// ─── Breadcrumbs ───────────────────────────────────────
+.breadcrumb-container {
+  opacity: 0.5;
+  font-size: 0.8rem;
+}
+
+// ─── Article Meta ──────────────────────────────────────
+.content-meta {
+  opacity: 0.45;
+  font-size: 0.8rem;
+  margin-top: 0;
+}
+
+// ─── Tag List ──────────────────────────────────────────
+.tags a.internal.tag-link {
+  font-size: 0.75rem;
+  opacity: 0.6;
+  padding: 0.15em 0.5em;
+  border: 1px solid var(--lightgray);
+  border-radius: 3px;
+  background: transparent;
+
+  &:hover {
+    opacity: 1;
+    border-color: var(--gray);
+  }
+}
+
+// ─── Folder / List Page ────────────────────────────────
 .section > .meta {
   font-size: 0.7rem;
   white-space: nowrap;
+  opacity: 0.4;
 }
 
-// 폴더 페이지 태그 글자 크기 축소
 .section > .tags {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 }
 
 .section > .tags > li {
   display: inline-block;
-  margin-right: 0.3em;
+  margin-right: 0.2em;
 }
 
-// 왼쪽 탐색기 텍스트 ellipsis 처리
+.section h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+li.section-li {
+  margin-bottom: 0.6em;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+// ─── Explorer ──────────────────────────────────────────
 .explorer-content ul li > a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+  font-size: 0.85rem;
+  padding: 0.15rem 0;
+  opacity: 0.65;
+  transition: opacity 0.15s ease;
+
+  &:hover, &.active {
+    opacity: 1;
+  }
 }
 
 .folder-container > div > a,
@@ -56,12 +147,11 @@
   text-overflow: ellipsis;
 }
 
-// 폴더명과 화살표 수직 정렬
 .folder-container {
   align-items: center;
 
   .folder-title {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     line-height: 1.5rem;
     vertical-align: middle;
   }
@@ -69,17 +159,109 @@
   .folder-icon {
     flex-shrink: 0;
     margin-right: 4px;
-    opacity: 0.5;
+    opacity: 0.35;
   }
 }
 
-// 탐색기 항상 열린 상태
 .explorer-content.always-open {
   overflow: visible;
   visibility: visible;
 }
 
-// 데스크톱에서 토글 버튼 숨김
 button.desktop-explorer {
   display: none !important;
+}
+
+// ─── Search ────────────────────────────────────────────
+.search button#search-button {
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// ─── Graph ─────────────────────────────────────────────
+.graph > h3,
+.backlinks > h3,
+.toc > h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.45;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+// ─── Table of Contents ─────────────────────────────────
+#toc-content {
+  font-size: 0.8rem;
+
+  & a {
+    opacity: 0.55;
+    transition: opacity 0.15s ease;
+
+    &:hover, &.in-view {
+      opacity: 1;
+    }
+  }
+}
+
+// ─── Code Blocks ───────────────────────────────────────
+pre {
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+code {
+  font-size: 0.85em;
+}
+
+// ─── Blockquote ────────────────────────────────────────
+blockquote {
+  border-left: 2px solid var(--lightgray);
+  padding-left: 1rem;
+  color: var(--gray);
+  font-style: normal;
+}
+
+// ─── Table ─────────────────────────────────────────────
+table {
+  font-size: 0.88rem;
+}
+
+th {
+  font-weight: 600;
+}
+
+// ─── Footer ────────────────────────────────────────────
+footer {
+  opacity: 0.35;
+  font-size: 0.75rem;
+}
+
+// ─── Scrollbar (subtle) ────────────────────────────────
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--lightgray);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// ─── HR ────────────────────────────────────────────────
+hr {
+  border: none;
+  border-top: 1px solid var(--lightgray);
+  margin: 2rem 0;
 }
