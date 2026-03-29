@@ -57,6 +57,7 @@ const config: QuartzConfig = {
       Plugin.CreatedModifiedDate({
         priority: ["frontmatter", "git", "filesystem"],
       }),
+      Plugin.DesmosGraphs(),
       Plugin.SyntaxHighlighting({
         theme: {
           light: "github-light",
