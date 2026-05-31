@@ -7,6 +7,9 @@ on:
   repository_dispatch:
     types: [vault-updated]
   workflow_dispatch:
+  schedule:
+    # 매일 KST 06:00 (UTC 21:00 전일)에 블로그 컨텐츠 갱신
+    - cron: "0 21 * * *"
 
 permissions:
   contents: read
