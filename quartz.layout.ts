@@ -5,7 +5,18 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    // 메인 페이지에만 최근 글 목록을 노출한다
+    Component.ConditionalRender({
+      component: Component.RecentNotes({
+        title: "최근 글",
+        limit: 30,
+        showTags: true,
+        filter: (f) => !f.slug?.endsWith("index"),
+      }),
+      condition: (page) => page.fileData.slug === "index",
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/cwJohnPark",
