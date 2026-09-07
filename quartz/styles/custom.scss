@@ -1,9 +1,20 @@
 @use "./base.scss";
 
 // ─── Global ────────────────────────────────────────────
+// 루트 크기를 올리면 rem 기반인 본문·사이드바가 함께 커진다
+html {
+  font-size: 17px;
+}
+
 body {
   letter-spacing: -0.01em;
   line-height: 1.75;
+}
+
+// 본문 가독성: 루트 확대에 더해 한 단계 더 키운다
+article {
+  font-size: 1.05rem;
+  line-height: 1.8;
 }
 
 // ─── Typography ────────────────────────────────────────
@@ -109,8 +120,8 @@ li.section-li {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
-  font-size: 0.85rem;
-  padding: 0.15rem 0;
+  font-size: 0.95rem;
+  padding: 0.2rem 0;
   opacity: 0.65;
   transition: opacity 0.15s ease;
 
@@ -130,8 +141,8 @@ li.section-li {
   align-items: center;
 
   .folder-title {
-    font-size: 0.88rem;
-    line-height: 1.5rem;
+    font-size: 0.98rem;
+    line-height: 1.6rem;
     vertical-align: middle;
   }
 
